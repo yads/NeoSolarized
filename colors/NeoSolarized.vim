@@ -143,6 +143,8 @@ let colors_name = "NeoSolarized"
 "
 " Set gui and terminal at the same time.
     let s:gui_mode       = "gui"
+    let s:gui_hi00        = "#0b5365"
+    let s:gui_hi0         = "#e3d9b9"
     let s:gui_base03      = "#002b36"
     let s:gui_base02      = "#073642"
     let s:gui_base01      = "#586e75"
@@ -208,14 +210,17 @@ endif
 " ---------------------------------------------------------------------
 if &background == "light"
     " GUI
+    let s:gui_temphi00  =   s:gui_hi00
     let s:gui_temp03    =   s:gui_base03
     let s:gui_temp02    =   s:gui_base02
     let s:gui_temp01    =   s:gui_base01
     let s:gui_temp00    =   s:gui_base00
+    let s:gui_hi00      =   s:gui_hi0
     let s:gui_base03    =   s:gui_base3
     let s:gui_base02    =   s:gui_base2
     let s:gui_base01    =   s:gui_base1
     let s:gui_base00    =   s:gui_base0
+    let s:gui_hi0       =   s:gui_temphi00
     let s:gui_base0     =   s:gui_temp00
     let s:gui_base1     =   s:gui_temp01
     let s:gui_base2     =   s:gui_temp02
@@ -295,6 +300,7 @@ endif
 
 exe "let s:bg_none      = ' "   .   "guibg=".s:gui_none     .   " ctermbg=".s:term_none      .   "'"
 exe "let s:bg_back      = ' "   .   "guibg=".s:gui_back     .   " ctermbg=".s:term_back      .   "'"
+exe "let s:bg_hi00      = ' "   .   "guibg=".s:gui_hi00     .   " ctermbg=".s:term_base02    .   "'"
 exe "let s:bg_base03    = ' "   .   "guibg=".s:gui_base03   .   " ctermbg=".s:term_base03    .   "'"
 exe "let s:bg_base02    = ' "   .   "guibg=".s:gui_base02   .   " ctermbg=".s:term_base02    .   "'"
 exe "let s:bg_base01    = ' "   .   "guibg=".s:gui_base01   .   " ctermbg=".s:term_base01    .   "'"
@@ -523,10 +529,10 @@ exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
 exe "hi! TabLine"        .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineFill"    .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineSel"     .s:fmt_none   .s:fg_base01  .s:bg_base2  .s:sp_base0  .s:fmt_revr
-exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
-exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
-exe "hi! CursorLineNr"   .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
+exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_hi00
+exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_hi00    .s:sp_base1
+exe "hi! CursorLineNr"   .s:fmt_uopt   .s:fg_none   .s:bg_hi00    .s:sp_base1
+exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_hi00
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
